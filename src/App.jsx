@@ -10,22 +10,23 @@ import RSP from "./routes/RSP/RSP";
 import Lotto from "./routes/Lotto/Lotto";
 import TicTacToe from "./routes/TicTacToe/TicTacToe";
 import MineSearch from "./routes/MineSearch/MineSearch";
-
 import "./App.css";
 
 function App() {
   return (
     <HashRouter>
       <Navigation />
-      <Route path="/" exact={true} component={Home} />
-      <Route path="/GuGuDan" component={GuGuDan} />
-      <Route path="/WordRelay" component={WordRelay} />
-      <Route path="/NumberBaseball" component={NumberBaseball} />
-      <Route path="/ResponseCheck" component={ResponseCheck} />
-      <Route path="/RSP" component={RSP} />
-      <Route path="/Lotto" component={Lotto} />
-      <Route path="/TicTacToe" component={TicTacToe} />
-      <Route path="/MineSearch" component={MineSearch} />
+      <div className="component">
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/GuGuDan" component={GuGuDan} />
+        <Route path="/WordRelay" component={WordRelay} />
+        <Route path="/NumberBaseball" component={NumberBaseball} />
+        <Route path="/ResponseCheck" component={ResponseCheck} />
+        <Route path="/RSP" component={RSP} />
+        <Route path="/Lotto" component={Lotto} />
+        <Route path="/TicTacToe" component={TicTacToe} />
+        <Route path="/MineSearch" component={MineSearch} />
+      </div>
     </HashRouter>
   );
 }
