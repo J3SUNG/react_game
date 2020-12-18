@@ -10,7 +10,11 @@ const Td = memo(({ rowIndex, cellIndex, dispatch, cellData }) => {
     dispatch({ type: CLICK_CELL, row: rowIndex, cell: cellIndex });
   }, [cellData]);
 
-  return <td onClick={onClickTd}>{cellData}</td>;
+  return (
+    <td className="tictactoe" onClick={onClickTd}>
+      {cellData}
+    </td>
+  );
 });
 
 export default Td;
