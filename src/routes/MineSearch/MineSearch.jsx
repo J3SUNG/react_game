@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, createContext, useMemo } from "react";
 import Table from "./Table";
 import Form from "./Form";
+import "./MineSearch.css";
 
 export const CODE = {
   MINE: -7,
@@ -278,7 +279,7 @@ const MineSearch = () => {
   return (
     <TableContext.Provider value={value}>
       <Form />
-      <div>{timer}</div>
+      <div>{timer + " sec"}</div>
       <Table />
       <div>{result}</div>
     </TableContext.Provider>

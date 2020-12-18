@@ -1,5 +1,6 @@
 import React, { useRef, useState, memo } from "react";
 import Try from "./try";
+import "./NumberBaseball.css";
 
 function getNumbers() {
   const candiate = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -61,7 +62,7 @@ const NumberBaseball = memo(() => {
 
   return (
     <>
-      <h1>{result}</h1>
+      <div>{result}</div>
       <form onSubmit={onSubmitForm}>
         <input
           ref={inputRef}

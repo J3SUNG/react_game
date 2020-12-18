@@ -124,6 +124,7 @@ const RealTd = memo(({ onClickTd, onRightClickTd, data }) => {
   console.log("real td rendered");
   return (
     <td
+      className="Mine"
       style={getTdStyle(data)}
       onClick={onClickTd}
       onContextMenu={onRightClickTd}
