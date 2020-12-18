@@ -1,5 +1,5 @@
-import React, { useCallback, useState, useContext, memo } from "react";
-import { TableContext, START_GAME } from "./MineSearch";
+import React, { useState, useCallback, useContext, memo } from "react";
+import { START_GAME, TableContext } from "./MineSearch";
 
 const Form = memo(() => {
   const [row, setRow] = useState(10);
