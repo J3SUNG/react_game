@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import "./RSP.css";
 
 const rspCoords = {
   바위: "0",
@@ -25,10 +26,8 @@ const RSP = () => {
   const interval = useRef();
 
   useEffect(() => {
-    console.log("다시 실행");
     interval.current = setInterval(changeHand, 100);
     return () => {
-      console.log("종료");
       clearInterval(interval.current);
     };
   }, [imgCoord]);

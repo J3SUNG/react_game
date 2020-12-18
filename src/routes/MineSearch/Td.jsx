@@ -39,7 +39,6 @@ const getTdStyle = (code) => {
 };
 
 const getTdText = (code) => {
-  console.log("getTdtext");
   switch (code) {
     case CODE.NORMAL:
       return "";
@@ -109,8 +108,6 @@ const Td = memo(({ rowIndex, cellIndex }) => {
     [tableData[rowIndex][cellIndex], halted]
   );
 
-  console.log("td rendered");
-
   return (
     <RealTd
       onClickTd={onClickTd}
@@ -121,7 +118,6 @@ const Td = memo(({ rowIndex, cellIndex }) => {
 });
 
 const RealTd = memo(({ onClickTd, onRightClickTd, data }) => {
-  console.log("real td rendered");
   return (
     <td
       className="Mine"

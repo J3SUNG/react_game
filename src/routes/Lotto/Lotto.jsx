@@ -9,7 +9,6 @@ import Ball from "./Ball";
 import "./Lotto.css";
 
 function getWinNumbers() {
-  console.log("getWinNumbers");
   const candiate = Array(45)
     .fill()
     .map((v, i) => i + 1);
@@ -33,7 +32,6 @@ const Lotto_hooks = () => {
   const timeouts = useRef([]);
 
   useEffect(() => {
-    console.log("useEffect");
     for (let i = 0; i < winNumbers.length - 1; ++i) {
       timeouts.current[i] = setTimeout(() => {
         setWinBalls((prevBalls) => [...prevBalls, winNumbers[i]]);

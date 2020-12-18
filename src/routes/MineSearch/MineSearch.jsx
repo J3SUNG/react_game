@@ -11,7 +11,7 @@ export const CODE = {
   QUESTION_MINE: -4,
   FLAG_MINE: -5,
   CLICKED_MINE: -6,
-  OPENED: 0, // 0 이상이면 다 opened
+  OPENED: 0,
 };
 
 export const TableContext = createContext({
@@ -34,7 +34,6 @@ const initialState = {
 };
 
 const plantMine = (row, cell, mine) => {
-  console.log(row, cell, mine);
   const candidate = Array(row * cell)
     .fill()
     .map((arr, i) => {
@@ -63,7 +62,6 @@ const plantMine = (row, cell, mine) => {
     data[ver][hor] = CODE.MINE;
   }
 
-  console.log(data);
   return data;
 };
 
@@ -97,9 +95,7 @@ const reducer = (state, action) => {
       });
       const checked = [];
       let openedCount = 0;
-      console.log(tableData.length, tableData[0].length);
       const checkAround = (row, cell) => {
-        console.log(row, cell);
         if (
           row < 0 ||
           row >= tableData.length ||
@@ -107,7 +103,7 @@ const reducer = (state, action) => {
           cell >= tableData[0].length
         ) {
           return;
-        } // 상하좌우 없는칸은 안 열기
+        }
         if (
           [
             CODE.OPENED,
@@ -118,12 +114,12 @@ const reducer = (state, action) => {
           ].includes(tableData[row][cell])
         ) {
           return;
-        } // 닫힌 칸만 열기
+        }
         if (checked.includes(row + "/" + cell)) {
           return;
         } else {
           checked.push(row + "/" + cell);
-        } // 한 번 연칸은 무시하기
+        }
         let around = [tableData[row][cell - 1], tableData[row][cell + 1]];
         if (tableData[row - 1]) {
           around = around.concat([
@@ -143,7 +139,6 @@ const reducer = (state, action) => {
           return [CODE.MINE, CODE.FLAG_MINE, CODE.QUESTION_MINE].includes(v);
         }).length;
         if (count === 0) {
-          // 주변칸 오픈
           if (row > -1) {
             const near = [];
             if (row - 1 > -1) {
@@ -166,7 +161,6 @@ const reducer = (state, action) => {
           }
         }
         if (tableData[row][cell] === CODE.NORMAL) {
-          // 내 칸이 닫힌 칸이면 카운트 증가
           openedCount += 1;
         }
         tableData[row][cell] = count;
@@ -174,16 +168,10 @@ const reducer = (state, action) => {
       checkAround(action.row, action.cell);
       let halted = false;
       let result = "";
-      console.log(
-        state.data.row * state.data.cell - state.data.mine,
-        state.openedCount,
-        openedCount
-      );
       if (
         state.data.row * state.data.cell - state.data.mine ===
         state.openedCount + openedCount
       ) {
-        // 승리
         halted = true;
         result = `${state.timer}초만에 승리하셨습니다`;
       }

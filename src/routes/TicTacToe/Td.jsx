@@ -3,7 +3,6 @@ import { CLICK_CELL } from "./TicTacToe";
 
 const Td = memo(({ rowIndex, cellIndex, dispatch, cellData }) => {
   const onClickTd = useCallback(() => {
-    console.log(rowIndex, cellIndex);
     if (cellData) {
       return;
     }
